@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
  
 setup(
     name='rheclib',
-    version='0.1',
+    version='0.1.1',
     description='Grab bag django app',
     author='Robert Eanes',
     author_email='django@robsinbox.com',
