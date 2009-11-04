@@ -3,7 +3,7 @@ from django.forms.fields import Field, CharField, RegexField, TimeField, DEFAULT
 from django.forms.widgets import Textarea
 from django.forms.util import ValidationError
 from django.utils.translation import ugettext as _
-
+from string import lower
 import logging
 
 class ListField(CharField):
@@ -76,3 +76,10 @@ class EmailListField(RegexListField):
     def __init__(self, max_length=None, min_length=None, *args, **kwargs):
            RegexListField.__init__(self, email_re, max_length, min_length, *args,
                                **kwargs)
+
+
+    def clean(self, value):
+        values = super(EmailListField, self).clean(value)
+        values = map(lower, values)
+        return values
+
